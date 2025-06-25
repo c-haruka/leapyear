@@ -5,30 +5,31 @@ on:
   pull_request: 
     branches: [ main ]
 
-jobs: build:
+jobs: 
+  build:
 
-runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-steps:
-- uses: actions/checkout@v3
+    steps:
+      - uses: actions/checkout@v3
 
-- name: Set up Go
-  uses: actions/setup-go@v2
-  with:
-    go-version: '1.18.x'
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.18.x'
 
-- name: Cache Go modules
-  uses: actions/cache@v3
-  with:
-    path: |
-      ~/.cache/go-build
-      ~/go/pkg/mod
-    key: $-go-$
-    restore-keys: |
-      $-go-
+      - name: Cache Go modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: $-go-$
+          restore-keys: |
+            $-go-
 
-- name: Install dependencies
-  run: go mod tidy
+      - name: Install dependencies
+        run: go mod tidy
 
-- name: Run tests
-  run: go test -v ./...
+      - name: Run tests
+        run: go test -v ./...
