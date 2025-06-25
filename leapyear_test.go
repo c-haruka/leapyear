@@ -5,8 +5,8 @@ import (
 )
 
 func TestLeapYear01(t *testing.T) {
-    expected := leapyaer(1)
-    actual := true
+    expected := leapyear(1)
+    actual := false
     if expected != actual {
         t.Errorf("Error")
     }
